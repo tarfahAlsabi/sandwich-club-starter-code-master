@@ -10,6 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JsonUtils {
+    public static final String KEY_NAME = "name";
+    public static final String KEY_ALSO_KNOW_AS = "alsoKnownAs";
+    public static final String KEY_PLACE_OF_ORIGIN = "placeOfOrigin";
+    public static final String KEY_MAIN_NAME = "mainName";
+    public static final String KEY_INGREDIENTS = "ingredients";
+    public static final String KEY_DESCRIPTION = "description";
+    public static final String KEY_IMAGE = "image";
+
 
     public static Sandwich parseSandwichJson(String json) {
         String mainName, placeOfOrigin, description, image;
@@ -18,12 +26,12 @@ public class JsonUtils {
         JSONArray JSONOtherNames,JSONIngredients;
         try {
             JSOONSandwitch = new JSONObject(json);
-            JSONOtherNames = JSOONSandwitch.getJSONObject("name").getJSONArray("alsoKnownAs");
-            JSONIngredients= JSOONSandwitch.getJSONArray("ingredients");
-            mainName= JSOONSandwitch.getJSONObject("name").getString("mainName");
-            placeOfOrigin= JSOONSandwitch.getString("placeOfOrigin");
-            description=JSOONSandwitch.getString("description");
-            image=JSOONSandwitch.getString("image");
+            JSONOtherNames = JSOONSandwitch.getJSONObject(KEY_NAME).getJSONArray(KEY_ALSO_KNOW_AS);
+            JSONIngredients= JSOONSandwitch.getJSONArray(KEY_INGREDIENTS);
+            mainName= JSOONSandwitch.getJSONObject(KEY_NAME).getString(KEY_MAIN_NAME);
+            placeOfOrigin= JSOONSandwitch.getString(KEY_PLACE_OF_ORIGIN);
+            description=JSOONSandwitch.getString(KEY_DESCRIPTION);
+            image=JSOONSandwitch.getString(KEY_IMAGE);
             for(int i=0 ; i<JSONOtherNames.length();i++){
                 alsoKnownAs.add(JSONOtherNames.getString(i));
             }

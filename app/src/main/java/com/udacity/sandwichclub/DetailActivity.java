@@ -54,9 +54,9 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        populateUI();
         Picasso.with(this)
                 .load(sandwich.getImage())
+                .error(R.mipmap.ic_launcher)
                 .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
@@ -71,8 +71,5 @@ public class DetailActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
 
-    private void populateUI() {
-
-    }
 
 }
